@@ -45,12 +45,16 @@ class NativeObsCore {
         enableEqualizer: Boolean = true,
         eqLowGain: Float = 2.0f,
         eqMidGain: Float = 0.0f,
-        eqHighGain: Float = 1.5f
+        eqHighGain: Float = 1.5f,
+        enableAudioDucking: Boolean = true,
+        duckingThresholdDb: Float = -28.0f,
+        duckingAttenuationDb: Float = -10.0f
     ) {
         oboeEngine.configureNoiseGate(enableNoiseGate, noiseGateThresholdDb)
         oboeEngine.configureCompressor(enableCompressor, compressorThresholdDb, compressorRatio)
         oboeEngine.configureGainBooster(enableGainBooster, gainBoostDb)
         oboeEngine.configureEqualizer(enableEqualizer, eqLowGain, eqMidGain, eqHighGain)
+        oboeEngine.configureAudioDucking(enableAudioDucking, duckingThresholdDb, duckingAttenuationDb)
     }
 
     fun switchActiveScene(sceneId: String) {

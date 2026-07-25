@@ -87,6 +87,14 @@ class OboeAudioEngine {
         }
     }
 
+    fun configureAudioDucking(enableDucking: Boolean, thresholdDb: Float = -28.0f, attenuationDb: Float = -10.0f) {
+        if (isNativeLoaded) {
+            nativeSetAudioDucking(enableDucking, thresholdDb, attenuationDb)
+        } else {
+            Log.i("OboeAudioEngine", "Fallback: Audio Ducking C++ (Atenuación automática del juego al hablar) = $enableDucking [Umbral Voz: $thresholdDb dB, Atenuación Juego: $attenuationDb dB]")
+        }
+    }
+
     // Métodos nativos JNI C++ (oboe_audio_engine.cpp)
     private external fun nativeStartAudioEngine(sampleRate: Int, channelCount: Int, recordMic: Boolean): Boolean
     private external fun nativeStopAudioEngine()
@@ -96,4 +104,5 @@ class OboeAudioEngine {
     private external fun nativeSetCompressor(enableCompressor: Boolean, thresholdDb: Float, ratio: Float)
     private external fun nativeSetGainBooster(enableGainBooster: Boolean, boostDb: Float)
     private external fun nativeSetEqualizer(enableEqualizer: Boolean, lowGain: Float, midGain: Float, highGain: Float)
+    private external fun nativeSetAudioDucking(enableDucking: Boolean, thresholdDb: Float, attenuationDb: Float)
 }

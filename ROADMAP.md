@@ -25,7 +25,7 @@ Este documento detalla la hoja de ruta de desarrollo para transformar **Mobile O
 - [x] **Recorte de Video Rápido Sin Pérdida (Rust / MediaMuxer)**:
   - Módulo de edición de video lossless sin recomprimir fotogramas.
 - [x] **AudioPlaybackCapture API & Filtros Avanzados (Android 10+ / C++ Oboe)**:
-  - Enlace de buffers PCM con Compresor Dinámico, Amplificador de Ganancia (Gain Booster) y Ecualizador de 3 Bandas (Graves, Medios, Agudos) en `oboe_audio_engine.cpp`.
+  - Enlace de buffers PCM con Compresor Dinámico, Amplificador de Ganancia (Gain Booster), Ecualizador de 3 Bandas y Audio Ducking Inteligente para atenuar el audio del juego cuando se habla por micrófono.
 - [x] **Sistema de Escenas y Fuentes (Rust / Scene Graph)**:
   - Soporte para múltiples escenas (Gaming + Facecam, Solo Pantalla, Pausa, IRL Focus) con control de visibilidad y capas Z de fuentes independientes (Pantalla, Cámara PiP, Marca de Agua, Texto).
 - [x] **Cámara Frontal PiP (Picture-in-Picture)**:

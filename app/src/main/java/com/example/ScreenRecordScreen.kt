@@ -1838,6 +1838,87 @@ fun AdvancedAudioFiltersCard(
                     colors = SliderDefaults.colors(thumbColor = Color(0xFF00D2FF), activeTrackColor = Color(0xFF00D2FF))
                 )
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
+            HorizontalDivider(color = Color(0xFF262C3D), thickness = 1.dp)
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Audio Ducking (Atenuación Automática de Juego al Hablar)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = "Audio Ducking Inteligente (C++)",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.White
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Surface(
+                            shape = RoundedCornerShape(4.dp),
+                            color = Color(0xFF2E1A3C)
+                        ) {
+                            Text(
+                                text = "STREAM",
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFFCE93D8),
+                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                            )
+                        }
+                    }
+                    Text(
+                        text = "Baja automáticamente el volumen del juego cuando hablas por el micrófono",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Gray
+                    )
+                }
+                Switch(
+                    checked = audioFilters.enableAudioDucking,
+                    onCheckedChange = { enable -> onUpdateFilters { it.copy(enableAudioDucking = enable) } },
+                    enabled = !isRecording,
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = Color(0xFFCE93D8)
+                    )
+                )
+            }
+
+            if (audioFilters.enableAudioDucking) {
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Umbral Sensibilidad Voz
+                Text(
+                    text = "Sensibilidad de Voz (Umbral): ${audioFilters.duckingThresholdDb.toInt()} dB",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFFCE93D8)
+                )
+                Slider(
+                    value = audioFilters.duckingThresholdDb,
+                    onValueChange = { thresh -> onUpdateFilters { it.copy(duckingThresholdDb = thresh) } },
+                    valueRange = -40f..-15f,
+                    enabled = !isRecording,
+                    colors = SliderDefaults.colors(thumbColor = Color(0xFFCE93D8), activeTrackColor = Color(0xFFCE93D8))
+                )
+
+                // Nivel Atenuación Juego
+                Text(
+                    text = "Atenuación del Juego: ${audioFilters.duckingAttenuationDb.toInt()} dB",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFFCE93D8)
+                )
+                Slider(
+                    value = audioFilters.duckingAttenuationDb,
+                    onValueChange = { atten -> onUpdateFilters { it.copy(duckingAttenuationDb = atten) } },
+                    valueRange = -24f..-3f,
+                    enabled = !isRecording,
+                    colors = SliderDefaults.colors(thumbColor = Color(0xFFCE93D8), activeTrackColor = Color(0xFFCE93D8))
+                )
+            }
         }
     }
 }

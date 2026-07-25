@@ -262,7 +262,10 @@ class ScreenRecordService : Service() {
                 enableEqualizer = currentState.audioFilters.enableEqualizer,
                 eqLowGain = currentState.audioFilters.eqLowGain,
                 eqMidGain = currentState.audioFilters.eqMidGain,
-                eqHighGain = currentState.audioFilters.eqHighGain
+                eqHighGain = currentState.audioFilters.eqHighGain,
+                enableAudioDucking = currentState.audioFilters.enableAudioDucking,
+                duckingThresholdDb = currentState.audioFilters.duckingThresholdDb,
+                duckingAttenuationDb = currentState.audioFilters.duckingAttenuationDb
             )
             nativeObsCore.switchActiveScene(currentState.selectedSceneId)
 

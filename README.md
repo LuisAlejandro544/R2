@@ -18,6 +18,7 @@
   - **Compresor Dinámico**: Nivela picos altos de volumen durante momentos intensos de juego para evitar saturación y distorsión.
   - **Amplificador de Ganancia (Gain Booster)**: Oculta o resalta voces suaves de +0dB a +12dB.
   - **Ecualizador de 3 Bandas**: Ajuste independiente de frecuencias Graves (Bass), Medios (Voice) y Agudos (Treble).
+  - **Audio Ducking Inteligente (C++)**: Atenúa automáticamente el volumen del juego cuando detecta voz por micrófono con controles de sensibilidad y nivel de dB.
 - 📷 **Superposición de Cámara Facecam (Rust / PiP)**: Opción conmutable de Picture-in-Picture (PiP) para grabar tu rostro en tiempo real sobre la pantalla.
 - 🐞 **Herramientas de Debug en Tiempo Real (Solo APK Debug)**:
   - **Métricas de Rendimiento & Consumo de Hardware**: Monitor en tiempo real de uso de CPU (%), memoria JVM Heap, memoria nativa C++/Rust, conteo de hilos activos y desglose por subsistema (Video Pipeline, Motor Audio Dual, Overlay Flotante y Render Compose UI).

@@ -37,7 +37,10 @@ data class AudioFilterSettings(
     val enableEqualizer: Boolean = true,
     val eqLowGain: Float = 2.0f,  // Graves dB
     val eqMidGain: Float = 0.0f,  // Medios dB
-    val eqHighGain: Float = 1.5f  // Agudos dB
+    val eqHighGain: Float = 1.5f, // Agudos dB
+    val enableAudioDucking: Boolean = true, // Atenuación automática del juego al hablar por micrófono
+    val duckingThresholdDb: Float = -28.0f, // Umbral de voz para activar ducking
+    val duckingAttenuationDb: Float = -10.0f // Reducción de volumen del juego en dB
 )
 
 object ObsScenePresets {

@@ -72,3 +72,8 @@
 - **`DebugLogger`**: Singleton thread-safe que registra logs con nivel (`INFO`, `WARN`, `ERROR`, `CRASH`) y captura automáticamente `UncaughtExceptionHandler` para loguear excepciones no controladas.
 - **`PerformanceMonitor`**: Monitorea continuamente el % de CPU consumido, la memoria Heap JVM (usada vs máx), memoria nativa allocated y calcula la estimación de consumo por subsistema (Video Pipeline, Audio Oboe Engine, Overlay Flotante, Facecam y Compose Render UI).
 - **`DebugToolsBottomSheet`**: ModalBottomSheet UI con pestañas para visualizar métricas, buscar/filtrar logs, copiar trazas al portapapeles y simular errores o forzar `System.gc()`.
+
+---
+
+## 🎛️ Audio Ducking Inteligente (`OboeAudioEngine`)
+- **Funcionamiento**: Cuando se habilita en `AudioFilterSettings`, el motor C++ monitoa el nivel RMS del canal del micrófono. Si la voz supera el umbral configurado (`duckingThresholdDb`), aplica de manera suave un atenuador en dB (`duckingAttenuationDb`) al audio interno del juego para evitar que el sonido del juego solape o distorsione los comentarios del gamer.
